@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172940">
+  <meta name="description" content="Sutra Books is an offline-first Indian accounting prototype. All demo data stays in this browser.">
+  <title>Sutra Books · Offline accounting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 36 36" role="presentation"><path d="M10 8.5h16M10 14h11M10 19.5h16M10 25h10"/><circle cx="26" cy="25" r="4.2"/></svg>
+        </div>
+        <div>
+          <div class="brand-name">sutra<span>.</span></div>
+          <div class="brand-caption">BOOKS & BUSINESS</div>
+        </div>
+        <button class="sidebar-close icon-button" id="sidebar-close" aria-label="Close menu">×</button>
+      </div>
+      <div class="workspace-label">WORKSPACE</div>
+      <div class="company-switcher">
+        <div class="company-avatar">A</div>
+        <div class="company-switcher-copy">
+          <strong id="sidebar-company-name">Aarohan Office Supplies</strong>
+          <span>FY 2026–27 · DEMO</span>
+        </div>
+        <span class="chevron">⌄</span>
+      </div>
+      <nav class="nav-list" id="main-nav" aria-label="Application sections"></nav>
+      <div class="sidebar-bottom">
+        <div class="offline-card">
+          <span class="offline-dot"></span>
+          <div><strong>Offline ready</strong><span>No cloud connection</span></div>
+        </div>
+        <button class="nav-item nav-settings" data-route="settings" type="button">
+          <span class="nav-icon" aria-hidden="true">⚙</span><span>Settings & data</span>
+        </button>
+        <div class="sidebar-user">
+          <div class="user-avatar">RK</div>
+          <div><strong>Riya Kapoor</strong><span>Bookkeeper · local</span></div>
+          <span class="more-dot">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-scrim" id="sidebar-scrim"></div>
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-toggle" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+          <div class="topbar-heading">
+            <div class="breadcrumbs"><span>Workspace</span><span class="crumb-separator">/</span><strong id="breadcrumb-current">Overview</strong></div>
+            <div class="topbar-subtitle" id="topbar-subtitle">Your books, in one clear view</div>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <label class="global-search" for="global-search-input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+            <input id="global-search-input" type="search" placeholder="Search books…" autocomplete="off" aria-label="Search books">
+            <kbd>⌘ K</kbd>
+          </label>
+          <button class="period-pill" id="period-trigger" type="button" aria-label="Change reporting period"><span class="period-calendar">▦</span><span id="period-label">FY 2026–27</span><span class="chevron">⌄</span></button>
+          <button class="button button-primary button-new" id="top-new-voucher" type="button"><span class="plus">＋</span><span>New voucher</span></button>
+        </div>
+        <div class="search-results" id="search-results" hidden></div>
+      </header>
+
+      <main class="page-content" id="page-content" tabindex="-1" aria-live="polite"></main>
+      <footer class="app-footer">
+        <span>sutra books <span class="footer-dot">·</span> offline prototype</span>
+        <span id="footer-storage">Saved on this device</span>
+      </footer>
+    </div>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+  <input id="restore-file" type="file" accept="application/json,.json" hidden>
+
+  <script src="src/data.js"></script>
+  <script src="src/engine.js"></script>
+  <script src="src/storage.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
